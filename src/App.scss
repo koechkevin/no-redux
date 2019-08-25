@@ -1,0 +1,208 @@
+body {
+  background-color: orange;
+}
+
+button {
+  background-color: dodgerblue;
+  cursor: pointer;
+  border: none;
+  margin-right: .4em;
+  border-radius: 3px;
+  outline: none;
+}
+
+@font-face {
+  font-family: "DIN Pro";
+  src: url(https://res.cloudinary.com/travela-andela/raw/upload/v1545298182/staging/FontFont_-_DINPro.otf);  ;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "DIN Pro";
+}
+.main {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 1em;
+}
+.stories, .tasks {
+  min-width: 270px;
+  max-width: 270px;
+  height: max-content;
+  max-height: 80vh;
+  overflow-y: scroll;
+  background-color: #dfe2e6;
+  margin-top: 1.5em;
+  text-align: center;
+  margin-right: 1em;
+  padding: 0 .5em .5em;
+  .head {
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #dfe2e6;
+    margin-bottom: .4em;
+    position: sticky;
+    padding: .5em;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    button {
+      background-color: #dfe2e6;
+    }
+  }
+  .story {
+    width: 100%;
+    height: 75px;
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: .5em;
+    text-align: left;
+    padding: 1em;
+    .summary {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+    }
+    .info {
+      margin-top: .5em;
+      font-size: 12px;
+      color: dodgerblue;
+    }
+  }
+}
+.nav {
+  width: 100vw;
+  min-width: 1200px;
+  height: 70px;
+  background-color: #956b02;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.manage {
+  .summary {
+    text-align: left;
+    font-size: 14px;
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    margin-top: 2em;
+    border-radius: 4px;
+    padding: .4em;
+  }
+  .title {
+    font-weight: bold;
+    color: grey;
+    margin-bottom: .2em;
+  }
+}
+.subtasks {
+  text-align: left;
+  .subTask{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 13px;
+    background-color: white;
+    margin-top: 1em;
+    min-height: 70px;
+    padding: 1em;
+  }
+  .bottom {
+    position: sticky;
+    background-color: #dfe2e6;
+    bottom: 0;
+    .title {
+      background-color: #dfe2e6;
+    }
+  }
+  .add {
+    background-color: white;
+    margin-top: 1em;
+    min-height: 70px;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    textarea {
+      width: 70%;
+    }
+    .button-input {
+      width: 20%;
+    }
+    input {
+      width: 100%;
+      height: 15px;
+      outline: none;
+    }
+  }
+}
+.sticky {
+  position: sticky;
+  top: 3.2em;
+}
+.subtask-title {
+  background-color: #dfe2e6;
+  text-align: left;
+  font-weight: bold;
+  padding: .5em;
+}
+
+.todo {
+  text-align: left;
+  .single-parent {
+    background-color: white;
+    min-height: 70px;
+    border-radius: 4px;
+    margin-top: 1em;
+    padding: .4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    button {
+      width: 50px;
+      align-self: flex-end;
+      color: white;
+    }
+  }
+  .single {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    .summary {
+      width: 80%;
+    }
+  }
+}
+.doing {
+  background-color: white;
+  position: sticky;
+  top: 2.8em;
+  font-size: 13px;
+  padding: 1em 1em 3em;
+  border-radius: 3px;
+  border-bottom: 10px solid #dfe2e6;
+  .buttons {
+    margin-top: 1em;
+    float: right;
+    button {
+      background-color: dodgerblue;
+      cursor: pointer;
+      color: white;
+      border: none;
+      margin-right: .4em;
+      border-radius: 3px;
+      outline: none;
+    }
+  }
+  .title {
+    font-weight: bold;
+    color: grey;
+  }
+  .estimate {
+    margin-top: 10px;
+  }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+}
