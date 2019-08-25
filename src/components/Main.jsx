@@ -5,15 +5,22 @@ import {Manage, Story, Todo} from "./index";
 class Main extends React.Component{
   state = {
     data: [],
+    issueTypes: [],
     'to-do':[]
   };
-  constructor(props){
+ constructor(props){
     super(props);
+    Jira.getAllIssueTypes()
+      .then(issueTypes=>this.setState({issueTypes}));
     this.fetchAll()
   }
 
   fetchAll = async () => {
     const data = await Jira.getAllStories();
+    if (this.state.manageStory) {
+      const active = data.find(e => e.id === this.state.manageStory.id);
+      this.setState({manageStory: active})
+    }
     this.setState({ data });
     const toDo = [];
     data.forEach(issue => {
@@ -46,7 +53,7 @@ class Main extends React.Component{
             <span>Manage</span>
             <button onClick={() => this.setState({manageStory: undefined})}>&times;</button>
           </div>
-          {this.state.manageStory && (<Manage story={this.state.manageStory} />)}
+          {this.state.manageStory && (<Manage fetchAll={this.fetchAll} issueTypes={this.state.issueTypes} story={this.state.manageStory} />)}
         </div>)}
         <div className="tasks">
           <div className="head">To Do</div>

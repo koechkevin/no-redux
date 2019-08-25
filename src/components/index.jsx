@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Jira from "../actions/jira";
 
 export const Story = ({ story, onClick }) => {
   const subtasks = story.fields.subtasks;
@@ -13,10 +14,24 @@ export const Story = ({ story, onClick }) => {
   );
 };
 
-
-export const Manage = ({ story }) => {
+const create = async ({summary, project, parent, issuetype, fetch}) => {
+  const body = {"fields":
+    {
+      parent,
+      project,
+      summary,
+      issuetype
+    }
+  }
+  await Jira.createJiraIssue(body);
+  fetch()
+}
+export const Manage = ({ story, issueTypes, fetchAll }) => {
   const subtasks = story.fields.subtasks;
   const [summary, setSummary] = useState('');
+  const {project} = story.fields;
+  const parent = story;
+  const issuetype = issueTypes.find(e => e.subtask);
   return (
     <div className="manage">
       <div className="sticky">
@@ -51,7 +66,7 @@ export const Manage = ({ story }) => {
             }}/>
             <div className="button-input">
               <input type="text"/>
-              <button onClick={() => console.log(summary)}>Save</button>
+              <button onClick={() => create({summary, project, parent, issuetype, fetch: fetchAll})}>Save</button>
             </div>
           </div>
         </div>

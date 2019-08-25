@@ -16,6 +16,7 @@ app.use(cors());
 // Creates a proxy to user jira board
 const proxy = (req, res) => {
   const host = req.headers.proxyhost;
+  delete req.headers['user-agent'];
   // req.headers.origin = host;
   // req.headers.Origin = host;
   const path = `/rest${req.originalUrl.split('/api/rest')[1]}`;
