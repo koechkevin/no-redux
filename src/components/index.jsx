@@ -23,6 +23,10 @@ const create = async ({summary, project, parent, issuetype, fetch}) => {
       issuetype
     }
   }
+  const bottom = document.getElementsByClassName('bottom');
+  const button = document.getElementsByClassName('add-button');
+  button[0].style.height = '30px';
+  bottom[0].style.height = '0';
   await Jira.createJiraIssue(body);
   fetch()
 }
@@ -32,6 +36,12 @@ export const Manage = ({ story, issueTypes, fetchAll }) => {
   const {project} = story.fields;
   const parent = story;
   const issuetype = issueTypes.find(e => e.subtask);
+  const showAdd = () => {
+    const bottom = document.getElementsByClassName('bottom');
+    const button = document.getElementsByClassName('add-button');
+    button[0].style.height = '0';
+    bottom[0].style.height = '100px';
+  };
   return (
     <div className="manage">
       <div className="sticky">
@@ -58,8 +68,9 @@ export const Manage = ({ story, issueTypes, fetchAll }) => {
             );
           })
         }
+        <button onClick={showAdd} className="add-button">Add + </button>
         <div className="bottom">
-          <div className="title">Add</div>
+          {/*<div className="title">Add</div>*/}
           <div className="add">
             <textarea onChange={(e) => {
               setSummary(e.target.value)

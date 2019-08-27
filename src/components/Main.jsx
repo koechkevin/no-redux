@@ -8,8 +8,7 @@ class Main extends React.Component{
     issueTypes: [],
     'to-do':[]
   };
- constructor(props){
-    super(props);
+  componentDidMount() {
     Jira.getAllIssueTypes()
       .then(issueTypes=>this.setState({issueTypes}));
     this.fetchAll()
@@ -36,6 +35,8 @@ class Main extends React.Component{
   clickStory = (story) => {
     this.setState({ manageStory: story});
   }
+
+
 
   render() {
     return (
